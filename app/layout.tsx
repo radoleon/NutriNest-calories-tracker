@@ -8,7 +8,7 @@ import { theme } from "./theme";
 const jaldi = Jaldi({ subsets: ["latin-ext"], weight: "400" });
 
 export const metadata: Metadata = {
-    title: "NutriNest",
+    title: "NutriNest | Dashboard",
     icons: {
         icon: "assets/favicon.svg"
     }

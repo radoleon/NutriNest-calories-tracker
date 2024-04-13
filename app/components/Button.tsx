@@ -6,9 +6,10 @@ import { useFormStatus } from "react-dom";
 interface ButtonProps {
     text: string
     submit?: boolean
+    disabled?: boolean
 }
 
-export default function Button({ text, submit } : ButtonProps) {
+export default function Button({ text, submit, disabled } : ButtonProps) {
 
     const { pending } = useFormStatus()
 
@@ -17,7 +18,7 @@ export default function Button({ text, submit } : ButtonProps) {
             size="small"
             type={submit ? "submit" : "button"}
             variant="contained"
-            disabled={pending}
+            disabled={pending || disabled}
             sx={{ textTransform: "none", fontWeight: "bold", fontSize: "1rem" }}
         >
             {text}

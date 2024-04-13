@@ -5,7 +5,7 @@ import { signup } from "../actions";
 export default function Signup() {
     return (
         <>
-            <h2 className="text-4xl font-bold mb-4 text-center text-amber-500">Signup</h2>
+            <h2 className="form-title">Signup</h2>
             <form action={signup}>
                 <label>
                     Email:

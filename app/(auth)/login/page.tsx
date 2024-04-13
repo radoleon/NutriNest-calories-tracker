@@ -5,7 +5,7 @@ import { login } from "../actions";
 export default function Login() {
     return (
         <>
-            <h2 className="text-4xl font-bold mb-4 text-center text-amber-500">Login</h2>
+            <h2 className="form-title">Login</h2>
             <form action={login}>
                 <label>
                     Email:

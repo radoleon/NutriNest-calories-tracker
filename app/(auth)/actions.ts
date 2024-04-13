@@ -16,7 +16,7 @@ export async function signup(formData: FormData) {
         throw error
     }
     else {
-        redirect("/dashboard")
+        redirect("/setup")
     }
 }
 
@@ -32,6 +32,6 @@ export async function login(formData: FormData) {
         throw error
     }
     else {
-        redirect("/dashboard")
+        redirect("/")
     }
 }

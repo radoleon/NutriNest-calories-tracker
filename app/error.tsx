@@ -2,7 +2,7 @@
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }, reset: () => void }) {
     return (
-        <div className="py-40 text-center max-w-lg mx-auto">
+        <div className="py-40 px-4 text-center max-w-lg mx-auto">
             <h2 className="text-7xl font-bold text-amber-500 mb-4">Error!</h2>
             <p className="text-lg mb-4">
                 Something went wrong: {error.message}
