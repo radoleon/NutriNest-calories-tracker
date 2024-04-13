@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 
 export default function Setup() {
 
-    const [caloriesBalance, setCaloriesBalance] = useState<string>("0")
+    const [caloriesBalance, setCaloriesBalance] = useState<string>("")
     const [goal, setGoal] = useState<string>("loose weight")
     
     const [pending, setPending] = useState<boolean>(false)
@@ -29,17 +29,12 @@ export default function Setup() {
 
         const calories = parseInt(caloriesBalance)
 
-        if (calories <= 0) {
-            setError("Calorie Balance has to be number greater than 0.")
-            return
-        }
-
         const response = await fetch(`${location.origin}/api/user`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         })
 
-        const json: userResponse = await response.json()
+        const json: UserResponse = await response.json()
         
         if (json.error) {
             setError(json.error.message)
@@ -90,6 +85,7 @@ export default function Setup() {
                     value={caloriesBalance}
                     onChange={(e) => setCaloriesBalance(e.target.value)}
                     required
+                    min={1}
                 />
             </label>
             <p>
@@ -103,7 +99,7 @@ export default function Setup() {
                 <FormControlLabel value="loose weight" control={<Radio size="small" />} label="Loose Weight" />
                 <FormControlLabel value="gain weight" control={<Radio size="small" />} label="Gain Weight" />
             </RadioGroup>
-            <div className="w-fit mx-auto mt-4">
+            <div className="w-fit mx-auto mt-6">
                 <Button text="Set" submit disabled={pending} />
             </div>
         </form>

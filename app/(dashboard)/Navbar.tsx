@@ -14,7 +14,7 @@ export default async function Navbar({ email }: { email: string }) {
                     className="cursor-pointer hover:opacity-65"
                 >
                     <Settings className="text-amber-500" />
-                    <span className="ml-1">{email}</span>
+                    <span className="ml-1 hidden sm:inline">{email}</span>
                 </Link>
                 <LogoutButton />
             </div>
