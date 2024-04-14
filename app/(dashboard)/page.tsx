@@ -14,6 +14,7 @@ async function getRecords (id: string, date: Date): Promise<RecordResponse[]> {
         .select()
         .eq("created_by", id)
         .eq("created_at", date.toISOString())
+        .order("timestamp")
     
     if (error) {
         throw error

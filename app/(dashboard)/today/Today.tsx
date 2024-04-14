@@ -23,7 +23,7 @@ export default async function Today({ records, goal }: TodayProps) {
         <section className="flex flex-col gap-8 md:flex-row md:gap-16 md:items-end">
             <div className="font-bold text-lg pt-8 flex-1">
                 <h2 className="text-2xl">Your Goal</h2>
-                <p className="pt-4">Calorie Balance<span className="ml-2 text-amber-500">{goal.calories}</span></p>
+                <p className="pt-4">Calorie Balance<span className="ml-2 text-amber-500">{goal.calories} kcal</span></p>
                 <p>Weight Adjustement<span className="ml-2 text-amber-500">{goal.goal}</span></p>
             </div>
             <div className="flex-1">

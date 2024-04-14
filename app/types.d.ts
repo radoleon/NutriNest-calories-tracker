@@ -26,7 +26,7 @@ type SportRecord = {
 
 type RecordResponse = {
     id: string
-    timestamp: unknown
+    timestamp: any
     created_by: string
     created_at: string
     type: string

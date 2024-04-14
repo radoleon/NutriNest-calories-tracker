@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root::-webkit-scrollbar {
+    display: none;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -46,4 +50,8 @@ progress.red::-webkit-progress-value {
 
 .form-title {
     @apply text-4xl font-bold mb-4 text-center text-amber-500;
+}
+
+.card {
+    @apply flex gap-6 p-4 rounded-lg bg-zinc-800 mt-3 items-center
 }

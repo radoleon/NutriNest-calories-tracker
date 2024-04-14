@@ -72,7 +72,9 @@ export default function Setup() {
         }
 
         setPending(false)
+        
         router.push("/")
+        router.refresh()
     }
 
     return (
