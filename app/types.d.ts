@@ -10,7 +10,6 @@ type UserResponse = {
 }
 
 type MealRecord = {
-    date?: Date
     title: string
     calories: number
     protein: number
@@ -19,9 +18,17 @@ type MealRecord = {
 }
 
 type SportRecord = {
-    date?: Date
     title: string
     calories: number
     hours: number
     minutes: number
+}
+
+type RecordResponse = {
+    id: string
+    timestamp: unknown
+    created_by: string
+    created_at: string
+    type: string
+    record: MealRecord | SportRecord
 }

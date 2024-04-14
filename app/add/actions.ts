@@ -16,7 +16,8 @@ export async function addMealRecord(formData: FormData) {
     }
 
     const supabase = createServerActionClient({ cookies })
-    const { error } = await supabase.from("records").insert({ record: data })
+    const { error } = await supabase.from("records")
+        .insert({ created_at: new Date().toISOString(), type: "meal", record: data })
 
     if (error) {
         throw error
@@ -31,13 +32,14 @@ export async function addSportRecord(formData: FormData) {
 
     const data: SportRecord = {
         title: formData.get("title")?.toString()!,
-        calories: parseInt(formData.get("calories") as string),
+        calories: parseInt(formData.get("calories") as string) * -1,
         hours: parseInt(formData.get("hours") as string),
         minutes: parseInt(formData.get("minutes") as string)
     }
 
     const supabase = createServerActionClient({ cookies })
-    const { error } = await supabase.from("records").insert({ record: data })
+    const { error } = await supabase.from("records")
+        .insert({ created_at: new Date().toISOString(), type: "sport", record: data })
 
     if (error) {
         throw error

@@ -10,10 +10,16 @@ export const metadata: Metadata = {
 export default async function AddLayout({ children }: Readonly<{ children: React.ReactNode }>) {
 
     const supabase = createServerComponentClient({ cookies })
-    const { data } = await supabase.auth.getUser()
+    const { data: user } = await supabase.auth.getUser()
 
-    if (!data.user) {
+    if (!user.user) {
         redirect("/login")
+    }
+
+    const { data } = await supabase.from("users").select().eq("id", user.user.id)
+
+    if (!data?.length) {
+        redirect("/setup")
     }
 
     return (
