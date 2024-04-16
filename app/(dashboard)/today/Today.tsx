@@ -3,7 +3,7 @@ type TodayProps = {
     goal: UserData
 }
 
-export default async function Today({ records, goal }: TodayProps) {
+export default function Today({ records, goal }: TodayProps) {
 
     let currentCalories: number = 0
     let progressClass: string = ""

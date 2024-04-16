@@ -1,7 +1,7 @@
 import Button from "@/app/components/Button";
 import { addMealRecord } from "../actions";
 
-export default function Meal() {
+export default async function Meal() {
     return (
         <>
             <h2 className="form-title">Add New Meal</h2>

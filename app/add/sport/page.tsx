@@ -1,7 +1,7 @@
 import Button from "@/app/components/Button";
 import { addSportRecord } from "../actions";
 
-export default function Sport() {
+export default async function Sport() {
     return (
         <>
             <h2 className="form-title">Add New Sport</h2>

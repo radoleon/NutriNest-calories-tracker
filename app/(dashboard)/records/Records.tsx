@@ -3,9 +3,10 @@
 import Button from "@/app/components/Button"
 import Link from "next/link"
 import { ArrowBackIosRounded, ArrowForwardIosRounded } from '@mui/icons-material';
-import { useEffect, useState } from "react";
+import { useState, startTransition } from "react";
 import { format } from "date-fns";
 import RecordsList from "./RecordsList";
+import Graphs from "./Graphs";
 
 type RecordsProps = {
     records: RecordResponse[]
@@ -18,13 +19,18 @@ export default function Records({ records: _records, goal, getRecords }: Records
     const [date, setDate] = useState<Date>(new Date())
     const [records, setRecords] = useState(_records)
 
-    useEffect(() => {
-        handleDateChange()
-    }, [date])
+    function handleDateChange(milliseconds: number) {
+        let newDate = new Date()
 
-    async function handleDateChange() {
-        const newRecords = await getRecords(goal.id, date)
-        setRecords(newRecords)
+        if (milliseconds !== 0) {
+            newDate = new Date(date.getTime() + milliseconds)
+        }
+        setDate(newDate)
+        
+        startTransition(async () => {
+            const newRecords = await getRecords(goal.id, newDate)
+            setRecords(newRecords)
+        })
     }
 
     return (
@@ -45,22 +51,23 @@ export default function Records({ records: _records, goal, getRecords }: Records
                 <div>
                     <ArrowBackIosRounded 
                         className="hover:opacity-50 cursor-pointer" 
-                        onClick={() => setDate(prevDate => new Date(prevDate.getTime() - 86400000))}
+                        onClick={() => handleDateChange(-86400000)}
                     />
                     <span 
                         className="text-base text-center font-bold mx-2 hover:opacity-50 cursor-pointer tracking-wide w-32 inline-block"
-                        onClick={() => setDate(new Date())}
+                        onClick={() => handleDateChange(0)}
                     >
                         {format(date, "E, MMM dd yyyy")}
                     </span>
                     <ArrowForwardIosRounded 
                         className="hover:opacity-50 cursor-pointer "
-                        onClick={() => setDate(prevDate => new Date(prevDate.getTime() + 86400000))}
+                        onClick={() => handleDateChange(86400000)}
                     />
                 </div>
             </div>
-            <section>
+            <section className="flex gap-6 flex-col md:flex-row md:gap-16">
                 <RecordsList records={records} goal={goal} />
+                <Graphs records={records} goal={goal} />
             </section>
         </section>
     )

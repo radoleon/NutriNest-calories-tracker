@@ -53,5 +53,5 @@ progress.red::-webkit-progress-value {
 }
 
 .card {
-    @apply flex gap-6 p-4 rounded-lg bg-zinc-800 mt-3 items-center
+    @apply flex gap-6 p-4 rounded-lg bg-zinc-800 mb-3 items-center
 }

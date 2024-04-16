@@ -2,12 +2,17 @@ import { Restaurant, FitnessCenter } from "@mui/icons-material"
 import { format } from "date-fns"
 
 export default function RecordsList({ records, goal }: { records: RecordResponse[], goal: UserData }) {
+    
+    if (!records.length) {
+        return <div className="flex-1">No records for this day.</div>
+    }
+    
     return (
-        <div>
+        <div className="flex-1">
             {records.map((record) => {
                 if ("protein" in record.record) {
                     return (
-                        <div className="card">
+                        <div className="card" key={record.id}>
                             <Restaurant color="primary" />
                             <div className="flex-auto">
                                 <p className="text-lg font-bold flex items-center gap-2 mb-2">
@@ -28,7 +33,7 @@ export default function RecordsList({ records, goal }: { records: RecordResponse
                 }
                 else {
                     return (
-                        <div className="card">
+                        <div className="card" key={record.id}>
                             <FitnessCenter color="primary" />
                             <div className="flex-auto">
                                 <p className="text-lg font-bold flex items-center gap-2 mb-2">

@@ -3,7 +3,7 @@ import { Settings } from "@mui/icons-material";
 import LogoutButton from "./LogoutButton";
 import Link from "next/link";
 
-export default async function Navbar({ email }: { email: string }) {
+export default function Navbar({ email }: { email: string }) {
     
     return (
         <nav className="flex items-center justify-between">
